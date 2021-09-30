@@ -1,0 +1,27 @@
+﻿<Window x:Class="OCHEN_WIDELAYUSHEESYA_NAZWANIE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OCHEN_WIDELAYUSHEESYA_NAZWANIE"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Background="SeaGreen">
+            <Button x:Name="Scnd" Margin="10" Height="50"/>
+            <Button x:Name="Add" Margin="10" Height="50" Click="Add_Click"/>
+            <Button x:Name="Frst" Margin="10" Height="50" Content="Выход" Click="Frst_Click"/>
+        </StackPanel>
+        <DataGrid x:Name="DeGas" Grid.Column="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="One" Width="*" Binding="{Binding Имя}"/>
+                <DataGridTextColumn Header="Two" Width="*" Binding="{Binding Фамилия}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</Window>

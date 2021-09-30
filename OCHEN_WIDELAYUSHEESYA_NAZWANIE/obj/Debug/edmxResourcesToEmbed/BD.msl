@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище AndrwZapModelContainer" CdmEntityContainer="AndrwZapEntities">
+    <EntitySetMapping Name="Люди">
+      <EntityTypeMapping TypeName="AndrwZapModel.Люди">
+        <MappingFragment StoreEntitySet="Люди">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Профессии">
+      <EntityTypeMapping TypeName="AndrwZapModel.Профессии">
+        <MappingFragment StoreEntitySet="Профессии">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Профессия" ColumnName="Профессия" />
+          <ScalarProperty Name="ID_Prof" ColumnName="ID_Prof" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

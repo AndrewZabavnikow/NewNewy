@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AndrwZapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Люди">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Фамилия" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Профессии" Relationship="Self.FK_Профессии_Люди" FromRole="Люди" ToRole="Профессии" />
+  </EntityType>
+  <EntityType Name="Профессии">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Профессия" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="ID_Prof" Type="Int32" />
+    <NavigationProperty Name="Люди" Relationship="Self.FK_Профессии_Люди" FromRole="Профессии" ToRole="Люди" />
+  </EntityType>
+  <Association Name="FK_Профессии_Люди">
+    <End Role="Люди" Type="Self.Люди" Multiplicity="0..1" />
+    <End Role="Профессии" Type="Self.Профессии" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Люди">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Профессии">
+        <PropertyRef Name="ID_Prof" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AndrwZapEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Люди" EntityType="Self.Люди" />
+    <EntitySet Name="Профессии" EntityType="Self.Профессии" />
+    <AssociationSet Name="FK_Профессии_Люди" Association="Self.FK_Профессии_Люди">
+      <End Role="Люди" EntitySet="Люди" />
+      <End Role="Профессии" EntitySet="Профессии" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

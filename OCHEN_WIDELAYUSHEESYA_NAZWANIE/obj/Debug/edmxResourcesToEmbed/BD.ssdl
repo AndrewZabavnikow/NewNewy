@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище AndrwZapModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Люди">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Имя" Type="nchar" MaxLength="10" />
+    <Property Name="Фамилия" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Профессии">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Профессия" Type="nchar" MaxLength="50" />
+    <Property Name="ID_Prof" Type="int" />
+  </EntityType>
+  <Association Name="FK_Профессии_Люди">
+    <End Role="Люди" Type="Self.Люди" Multiplicity="0..1" />
+    <End Role="Профессии" Type="Self.Профессии" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Люди">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Профессии">
+        <PropertyRef Name="ID_Prof" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище AndrwZapModelContainer">
+    <EntitySet Name="Люди" EntityType="Self.Люди" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Профессии" EntityType="Self.Профессии" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Профессии_Люди" Association="Self.FK_Профессии_Люди">
+      <End Role="Люди" EntitySet="Люди" />
+      <End Role="Профессии" EntitySet="Профессии" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
